@@ -1,24 +1,20 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import './App.scss';
+import { IIndicador } from './modelos/IIndicador';
+import Indicador from './componentes/Indicador';
+import { IMacroproceso } from './modelos/IMacroproceso';
+import { perspectivas } from './data/Perspectivas';
+import Perspectiva from './componentes/Perspectivas';
 
 function App() {
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='app'>
+      <table>
+        {perspectivas.map(perspectiva =>{
+          return <Perspectiva {...perspectiva}></Perspectiva>
+        })}
+      </table>
     </div>
   );
 }
