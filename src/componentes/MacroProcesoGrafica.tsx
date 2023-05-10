@@ -22,7 +22,9 @@ export const MacroProcesoGrafica = (props: IMacroproceso) => {
             ? indicador.nombre.substring(0, 60) + "..."
             : indicador.nombre,
         porcentajeCumplimiento:
-          (indicador.valorActual / indicador.valorMeta) * 100,
+          indicador.valorActual > indicador.valorMeta
+            ? 100
+            : indicador.valorActual<0?0:(indicador.valorActual / indicador.valorMeta) * 100,
       };
     }
   );

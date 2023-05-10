@@ -18,8 +18,8 @@ export const MacroProceso = (props: IMacroproceso) => {
         <td>Año Meta</td>
         <td>% Cumplimiento</td>
       </tr>
-      {indicadores.map((indicador) => {
-          return <Indicador {...indicador}></Indicador>;
+      {indicadores.map((indicador, key) => {
+          return <Indicador {...indicador} key={key}></Indicador>;
         })}
     </>
   );

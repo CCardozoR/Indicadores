@@ -5,14 +5,14 @@ import MacroProceso from "./MacroProceso";
 export const Perspectiva = (props: IPerspectiva) => {
   const { nombre, macroProcesos } = props;
   return (
-    <>
+    <tbody>
       <tr className="perspectiva">
         <td colSpan={5}>Perpectiva: {nombre}</td>
       </tr>
-      {macroProcesos.map((macroProceso) => {
-          return <MacroProceso {...macroProceso}></MacroProceso>;
-        })}
-    </>
+      {macroProcesos.map((macroProceso, key) => {
+        return <MacroProceso {...macroProceso} key={key}></MacroProceso>;
+      })}
+    </tbody>
   );
 };
 
