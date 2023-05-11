@@ -7,6 +7,7 @@ import {
   PolarAngleAxis,
   PolarRadiusAxis,
   ResponsiveContainer,
+  Tooltip,
 } from "recharts";
 
 interface IIndicadorGrafico {
@@ -19,12 +20,15 @@ export const MacroProcesoGrafica = (props: IMacroproceso) => {
       return {
         nombre:
           indicador.nombre.length > 60
-            ? indicador.nombre.substring(0, 60) + "..."
+            ? indicador.nombre.substring(0, 40) + "..."
             : indicador.nombre,
         porcentajeCumplimiento:
           indicador.valorActual > indicador.valorMeta
             ? 100
-            : indicador.valorActual<0?0:(indicador.valorActual / indicador.valorMeta) * 100,
+            : indicador.valorActual < 0
+            ? 0
+            : Math.trunc((indicador.valorActual / indicador.valorMeta) * 100),
+        
       };
     }
   );
@@ -48,9 +52,10 @@ export const MacroProcesoGrafica = (props: IMacroproceso) => {
             >
               <PolarGrid />
               <PolarAngleAxis dataKey="nombre" />
+              <Tooltip />
               <PolarRadiusAxis domain={[0, 100]} />
               <Radar
-                name="Indicadores"
+                name="Porcentaje de cumplimiento"
                 dataKey="porcentajeCumplimiento"
                 stroke="#8884d8"
                 fill="#8884d8"

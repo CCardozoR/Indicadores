@@ -12,6 +12,11 @@ export const Perspectiva = (props: IPerspectiva) => {
       {macroProcesos.map((macroProceso, key) => {
         return <MacroProceso {...macroProceso} key={key}></MacroProceso>;
       })}
+      <tr>
+        <td colSpan={5}>
+          <hr />
+        </td>
+      </tr>
     </tbody>
   );
 };
