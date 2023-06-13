@@ -22,26 +22,28 @@ export const Indicador = (props: IIndicador) => {
 
   const [valorActualState, setValorActual] = useState(valorActual);
   const editarIndicadorValorActual = (e: any) => {
-    if (e.target.value >= 0) {
-      setValorActual(e.target.value);
+    const numericValue = Number(e.target.value);
+    if (numericValue >= 0) {
+      setValorActual(numericValue);
       dispatch(
-        editarIndicadorAction({ ...props, valorActual: e.target.value })
+        editarIndicadorAction({ ...props, valorActual: numericValue })
       );
     }
   };
 
   const [valorMetaState, setValorMeta] = useState(valorMeta);
   const editarIndicadorValorMeta = (e: any) => {
-    if (e.target.value >= 0) {
-      setValorMeta(e.target.value);
+    const numericValue = Number(e.target.value);
+    if (numericValue >= 0) {
+      setValorMeta(numericValue);
       dispatch(
-        editarIndicadorAction({ ...props, valorMeta: e.target.value })
+        editarIndicadorAction({ ...props, valorMeta: numericValue })
       );
     }
   };
 
   return (
-    <tr className="table-item" style={rowStyle}>
+    <tr className="table-item">
       <td>{nombre}</td>
       <td>
         <input
@@ -60,7 +62,7 @@ export const Indicador = (props: IIndicador) => {
         />
       </td>
       <td>{anioMeta}</td>
-      <td>{cumplimiento}</td>
+      <td style={rowStyle}>{cumplimiento}</td>
     </tr>
   );
 };
